@@ -65,7 +65,6 @@ with st.form("health_form"):
     submitted = st.form_submit_button("Calculate Advanced Metrics")
 
 if submitted:
-    # Validation checks for blank fields
     if not weight_kg or not height_cm or not age or gender == "Select Gender..." or activity_label == "Select Activity Level..." or not target_weight_kg:
         st.error("⚠️ Please fill in all required fields with valid values before calculating.")
     else:
@@ -96,6 +95,7 @@ if submitted:
         m3.metric("BMR", f"{bmr:.0f} kcal")
         m4.metric("TDEE", f"{tdee:.0f} kcal")
         
+        st.caption("ℹ️ *Note: Body fat percentage is estimated via a generalized BMI formula and may read higher for muscular or athletic individuals.*")
         st.info(f"**Ideal Weight Range for Height:** {min_ideal_weight:.1f} - {max_ideal_weight:.1f} kg")
 
         # 100-Day Strategy & Macros
